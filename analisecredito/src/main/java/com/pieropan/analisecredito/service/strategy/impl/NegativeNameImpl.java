@@ -2,10 +2,12 @@ package com.pieropan.analisecredito.service.strategy.impl;
 
 import com.pieropan.analisecredito.domain.Proposal;
 import com.pieropan.analisecredito.service.strategy.ScoreCalculation;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Order(1)
 @Component
 public class NegativeNameImpl implements ScoreCalculation {
     @Override
