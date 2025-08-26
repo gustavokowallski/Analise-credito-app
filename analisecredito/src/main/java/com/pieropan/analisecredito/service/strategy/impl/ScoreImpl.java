@@ -1,11 +1,11 @@
 package com.pieropan.analisecredito.service.strategy.impl;
 
 import com.pieropan.analisecredito.domain.Proposal;
-import com.pieropan.analisecredito.service.strategy.PointCalculation;
+import com.pieropan.analisecredito.service.strategy.ScoreCalculation;
 
 import java.util.Random;
 
-public class ScoreImpl implements PointCalculation {
+public class ScoreImpl implements ScoreCalculation {
     @Override
     public int calculate(Proposal proposal) {
         int score = score();
