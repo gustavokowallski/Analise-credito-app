@@ -1,12 +1,13 @@
 package com.pieropan.analisecredito.service.strategy.impl;
 
+import com.pieropan.analisecredito.domain.Proposal;
 import com.pieropan.analisecredito.service.strategy.PointCalculation;
 
 import java.util.Random;
 
 public class NegativeNameImpl implements PointCalculation {
     @Override
-    public int calculate() {
+    public int calculate(Proposal proposal) {
         if(negativeName()){
             throw new RuntimeException("Nome negativado");
         }

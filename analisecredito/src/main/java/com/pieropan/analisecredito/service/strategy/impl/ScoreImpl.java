@@ -1,12 +1,13 @@
 package com.pieropan.analisecredito.service.strategy.impl;
 
+import com.pieropan.analisecredito.domain.Proposal;
 import com.pieropan.analisecredito.service.strategy.PointCalculation;
 
 import java.util.Random;
 
 public class ScoreImpl implements PointCalculation {
     @Override
-    public int calculate() {
+    public int calculate(Proposal proposal) {
         int score = score();
         if(score <= 200){
             throw new RuntimeException("Score abaixo do permitido");
