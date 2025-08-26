@@ -1,6 +1,7 @@
 package com.pieropan.analisecredito.service.strategy.impl;
 
 import com.pieropan.analisecredito.domain.Proposal;
+import com.pieropan.analisecredito.exceptions.StrategyException;
 import com.pieropan.analisecredito.service.strategy.ScoreCalculation;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,7 @@ public class NegativeNameImpl implements ScoreCalculation {
     @Override
     public int calculate(Proposal proposal) {
         if(negativeName()){
-            throw new RuntimeException("Nome negativado");
+            throw new StrategyException("Nome negativado");
         }
         return 100;
     }

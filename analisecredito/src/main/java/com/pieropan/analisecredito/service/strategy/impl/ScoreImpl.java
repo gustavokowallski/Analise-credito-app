@@ -1,6 +1,7 @@
 package com.pieropan.analisecredito.service.strategy.impl;
 
 import com.pieropan.analisecredito.domain.Proposal;
+import com.pieropan.analisecredito.exceptions.StrategyException;
 import com.pieropan.analisecredito.service.strategy.ScoreCalculation;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ public class ScoreImpl implements ScoreCalculation {
     public int calculate(Proposal proposal) {
         int score = score();
         if(score <= 200){
-            throw new RuntimeException("Score abaixo do permitido");
+            throw new StrategyException("Score abaixo do permitido");
         } else if (score <= 400){
             return 150;
         }
