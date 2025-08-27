@@ -4,5 +4,7 @@ spring:
     port: 5672
     username: guest
     password: guest
+    exchange:
+      completedproposal: proposta-concluida.ex
     queue:
       pendingproposal: proposta-pendente.ms-analise-credito
