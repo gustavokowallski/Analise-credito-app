@@ -15,7 +15,7 @@ public class AnalysisCreditService {
     @Autowired
     private List<ScoreCalculation> scoreCalculationList;
 
-    @Value("{rabbitmq.exchange.completedproposal}")
+    @Value("${rabbitmq.completedproposal.exchange}")
     private String exchangeProposalConcluded;
 
     @Autowired
