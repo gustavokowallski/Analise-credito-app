@@ -19,16 +19,21 @@ public class AnalysisCreditService {
     private String exchangeProposalConcluded;
 
     @Autowired
-    private NotificationRabbitMQService notificacaoRabbitMQService;
+    private NotificationRabbitMQService notificationRabbitMQService;
 
     public void toAnalyze(Proposal proposal){
-        try {
-            int pontos = scoreCalculationList.stream().mapToInt(impl -> impl.calculate(proposal)).sum();
-            proposal.setApproved(pontos > 350);
-        } catch (StrategyException e) {
-            proposal.setApproved(false);
-            proposal.setObservation(e.getMessage());
+
+            try {
+                int pontos = scoreCalculationList.stream().mapToInt(impl -> impl.calculate(proposal)).sum();
+                proposal.setApproved(pontos > 350);
+                proposal.setObservation("Crédito aprovado");
+            } catch (StrategyException ex) {
+                proposal.setApproved(false);
+                proposal.setObservation(ex.getMessage());
+            }
+        notificationRabbitMQService.toNotify(exchangeProposalConcluded, proposal);
         }
-        notificacaoRabbitMQService.toNotify(exchangeProposalConcluded, proposal);
+
+
     }
-}
+
